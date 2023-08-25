@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Our Shop</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .jumbotron {
+      /*background: url('background-image.jpg') center/cover;*/
+      color: white;
+      padding: 100px;
+    }
+    .feature-box {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .feature-icon {
+      font-size: 36px;
+      color: #007bff;
+    }
+  </style>
+
+</head>
+<header>
+  <nav class="navbar navbar-expand-lg " data-bs-theme="dark" style="background-color: #0a58ca">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Pos System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-4" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id="lnkCustomer" class="nav-link text-white" aria-current="page" href="customer.html">Customer</a>
+          </li>
+          <li class="nav-item">
+            <a id="lnkItem" class="nav-link text-white" href="item.html">Items</a>
+          </li>
+          <li class="nav-item">
+            <a id="lnkPlaceOrder" class="nav-link text-white" href="purchase-order.html">Place Orders</a>
+          </li>
+
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                 style="background-color: white; color: black;">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+<body>
+
+<div class="jumbotron text-center">
+  <h1 style="color: #2b2f32;font-weight: bold">Welcome to Our Shop</h1>
+  <p style="color: #0d6efd">Discover Amazing Items and Deals</p>
+  <a href="#" class="btn btn-primary btn-lg">Explore</a>
+</div>
+
+<div class="container" id="features">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="feature-box">
+        <span class="feature-icon">&#127757;</span>
+        <h2>WorldWide Products</h2>
+        <p>Explore our vast collection of items, from electronics to fashion.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <span class="feature-icon">&#127942;</span>
+        <h2>Quality Guaranteed</h2>
+        <p>We ensure that all our products meet high quality standards.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <span class="feature-icon">&#128176;</span>
+        <h2>Secure Shopping</h2>
+        <p>Your information is safe with us. Shop with confidence.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

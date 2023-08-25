@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Order</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <script src="../assets/js/jquery-3.7.0.min.js"></script>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" style="background-color: #0a58ca">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Pos System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-4" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="lnkCustomer" class="nav-link text-white" aria-current="page" href="customer.html">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="lnkItem" class="nav-link text-white" href="item.html">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="lnkPlaceOrder" class="nav-link text-white" href="purchase-order.html">Place Orders</a>
+                    </li>
+
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                           style="background-color: white; color: black;">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+<main id="placeOrder-section" class="tab-contents bg-primary-subtle p-3">
+    <h2 class="text-primary  text-center pt-12 m-lg-2">Place Order</h2>
+    <section class="col border-dark m-3 border rounded object-fit-contain">
+        <form class="row g-3">
+            <div class="col-md-2 m-3">
+                <label for="OrderID" class="form-label">OrderID</label>
+                <input type="orderID" class="form-control" id="OrderID" readonly="readonly">
+            </div>
+            <div class="col-md-3">
+                <label for="txtdate" class="form-label">Date</label>
+                <input type="date" class="form-control" id="txtdate">
+            </div>
+            <div class="col-md-3">
+                <label for="selectCusID" class="form-label">CustomerID</label>
+                <select class="form-select"   id="selectCusID">
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="customerName" class="form-label">CustomerName</label>
+                <input type="text" class="form-control" readonly="readonly" id="customerName">
+            </div>
+            <div class="col-md-3 m-3">
+                <label for="selectItemID" class="form-label">Item ID</label>
+                <select class="form-select"  readonly="readonly" id="selectItemID">
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="itemName" class="form-label">Item Name</label>
+                <input type="text" class="form-control"readonly="readonly" id="itemName">
+            </div>
+
+            <div class="col-md-2">
+                <label for="qtyOnHand" class="form-label">Qty On Hand</label>
+                <input type="text" class="form-control" readonly="readonly" id="qtyOnHand">
+            </div>
+            <div class="col-md-2 ">
+                <label for="unitPrice" class="form-label">UnitPrice</label>
+                <input type="text" class="form-control" readonly="readonly" id="unitPrice">
+            </div>
+            <div class="col-md-1  m-lg-3">
+                <label for="qty" class="form-label">Qty</label>
+                <input type="text" class="form-control" id="qty">
+            </div>
+
+            <div class="col-12 m-lg-3">
+                <button type="submit" class="btn btn-primary" id="addCartBtn">Add Cart</button>
+                <!--                        <button type="submit" class="btn btn-warning">Cansel</button>-->
+            </div>
+        </form>
+
+
+        <section class="col border-dark m-3 border rounded object-fit-contain col-md-18 ">
+            <h5 class="text-dark text-center m-lg-3 pb-3">Add To Cart Details</h5>
+            <table class="table table-light table-striped  ">
+                <thead>
+                <tr>
+                    <th style="background-color: #0d6efd" scope="col">OrderID</th>
+                    <th style="background-color: #0d6efd" scope="col">ItemID</th>
+                    <th style="background-color: #0d6efd" scope="col">CustomerID</th>
+                    <th style="background-color: #0d6efd" scope="col">ItemName</th>
+                    <th style="background-color: #0d6efd" scope="col">Qty</th>
+                    <th style="background-color: #0d6efd" scope="col">UnitPrice</th>
+                    <th style="background-color: #0d6efd" scope="col">Total</th>
+                    <th style="background-color: #0d6efd" scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody id="tblAddCart">
+                </tbody>
+            </table>
+            <div class="col-md-4 m-2">
+                <input type="Total" class="form-control" id="txtAllItemTotal" placeholder="TotalPrice :">
+            </div>
+        </section>
+        <div class="col-12  m-3 ">
+            <button type="submit" class="btn btn-success" id="placeOrderBtn">PlaceOrder</button>
+            <!--                    <button type="submit" class="btn btn-danger">Cansel</button>-->
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
