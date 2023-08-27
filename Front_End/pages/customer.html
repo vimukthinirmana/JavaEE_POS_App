@@ -13,6 +13,7 @@
             cursor: pointer;
         }
     </style>
+    <script src="../assets/js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 
@@ -88,13 +89,13 @@
 </main>
 
 
-<script src="../assets/js/jquery-3.6.1.min.js"></script>
+<script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 
 
 <!--bind a event on btn GetAll btn-->
 <script>
-    const BASE_URL="http://localhost:8080/jsonp/pages/";
+    const BaseURL="http://localhost:8080/web/";
 
     getAllCustomers();
 
@@ -108,8 +109,9 @@
         $("#tblCustomer").empty();
         <!--send ajax request to the customer servlet using jQuery-->
         $.ajax({
-            url: BASE_URL+'customer',
+            url: BaseURL+'customer',
             dataType: "json",
+            method: "GET",
             success: function (response) {
                 let customers = response.data;
                 for (let i in customers) {
@@ -131,7 +133,7 @@
     $("#btnCustomer").click(function () {
         let formData = $("#customerForm").serialize();
         $.ajax({
-            url: BASE_URL+"customer",
+            url: BaseURL+"customer",
             method: "post",
             data: formData,
             success: function (res) {
@@ -148,7 +150,7 @@
     $("#btnCusDelete").click(function () {
         let id = $("#txtCustomerID").val();
         $.ajax({
-            url: BASE_URL+'customer?cusID=' + id,
+            url: BaseURL+'customer?cusID=' + id,
             method: 'delete',
             success: function (resp) {
                 alert(resp.message);
@@ -176,7 +178,7 @@
         }
 
         $.ajax({
-            url: BASE_URL+'customer',
+            url: BaseURL+'customer',
             method: 'put',
             contentType: "application/json",
             data: JSON.stringify(object),

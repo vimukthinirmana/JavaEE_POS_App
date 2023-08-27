@@ -13,6 +13,7 @@
             cursor: pointer;
         }
     </style>
+    <script src="../assets/js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 <!--header-->
@@ -34,32 +35,32 @@
             <h1>Item Form</h1>
             <form id="itemForm">
             <div class="form-group">
-                <label for="itemCode">Item Code</label>
-                <input name="code" class="form-control" id="itemCode" type="text">
+                <label for="txtItemCode">Item Code</label>
+                <input name="code" class="form-control" id="txtItemCode" type="text">
                 <span class="control-error" id="lblCode"></span>
             </div>
             <div class="form-group">
-                <label for="itemName">Item Name</label>
-                <input name="description" class="form-control" id="itemName" type="text">
+                <label for="txtItemName">Item Name</label>
+                <input name="description" class="form-control" id="txtItemName" type="text">
                 <span class="control-error" id="lblname"></span>
             </div>
             <div class="form-group">
-                <label for="itemQty">Item Qty</label>
-                <input name="qty" class="form-control" id="itemQty" type="text">
+                <label for="txtItemQty">Item Qty</label>
+                <input name="qty" class="form-control" id="txtItemQty" type="text">
                 <span class="control-error" id="lblqty"></span>
             </div>
             <div class="form-group">
-                <label for="itemPrice">Unit Price</label>
-                <input name="unitPrice" class="form-control" id="itemPrice" type="text">
+                <label for="txtItemPrice">Unit Price</label>
+                <input name="unitPrice" class="form-control" id="txtItemPrice" type="text">
                 <span class="control-error" id="lblprice"></span>
             </div>
             </form>
             <div class="btn-group">
-                <button form="itemForm" formmethod="post"  formaction="item?option=add" class="btn btn-primary" id="btnItem">Add Item</button>
-                <button form="itemForm" formmethod="post"  formaction="item?option=delete" class="btn btn-danger" id="btnItemDelete">Remove</button>
-                <button form="itemForm" formmethod="post"  formaction="item?option=update" class="btn btn-warning" id="btnItemUpdate">Update</button>
-                <button form="itemForm" formaction="item" class="btn btn-success">Get All</button>
-                <button form="itemForm" type="reset" class="btn btn-danger" id="btn-clear">Clear All</button>
+                <button type="button"  class="btn btn-primary" id="btnItem">Add Item</button>
+                <button type="button"  class="btn btn-danger" id="btnItemDelete">Remove</button>
+                <button type="button"  class="btn btn-warning" id="btnItemUpdate">Update</button>
+                <button type="button"  class="btn btn-success" id="btnGetAll">Get All</button>
+                <button type="button"  class="btn btn-danger" id="btn-clear">Clear All</button>
             </div>
 
         </div>
@@ -82,6 +83,114 @@
     </section>
 
 </main>
+<script src="../assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    const BaseURL="http://localhost:8080/web/";
+
+    getAllItems();
+
+    $("#btnGetAll").click(function () {
+        getAllItems();
+    });
+
+    // get all items
+    function getAllItems() {
+        $("#tblItem").empty();
+        $.ajax({
+            url: BaseURL+'item',
+            dataType: "json",
+            method: "GET",
+            success: function (response) {
+                let items = response.data;
+                for (let i in items) {
+                    let item = items[i];
+                    let code = item.code;
+                    let description = item.description;
+                    let qty = item.qty;
+                    let unitPrice = item.unitPrice;
+                    let row = `<tr><td>${code}</td><td>${description}</td><td>${qty}</td><td>${unitPrice}</td></tr>`;
+                    $("#tblItem").append(row);
+                }
+            },
+            error: function (error) {
+                alert(error.responseJSON.message);
+            }
+        });
+    }
+
+
+    // save item function
+    $("#btnItem").click(function () {
+        let formData = $("#itemForm").serialize();
+        $.ajax({
+            url: BaseURL+"item",
+            method: "post",
+            data: formData,
+            success: function (res) {
+                alert(res.message);
+                getAllItems();
+            },
+            error: function (error) {
+                alert(error.responseJSON.message);
+            }
+        });
+    });
+
+
+
+    //delete item function
+    $("#btnItemDelete").click(function () {
+        let id = $("#txtItemCode").val();
+        $.ajax({
+            url: BaseURL+'item?itemCode=' + code,
+            method: 'delete',
+            success: function (resp) {
+                alert(resp.message);
+                getAllItems();
+            },
+            error: function (error) {
+                alert(error.responseJSON.message);
+            }
+        });
+    });
+
+
+
+    //update item function
+    $("#btnItemUpdate").click(function () {
+        let code = $("#txtItemCode").val();
+        let description = $("#txtItemDescription").val();
+        let qty = $("#txtItemQty").val();
+        let unitPrice = $("#txtItemPrice").val();
+
+        //json object
+        let object = {
+            "itemCode": code,
+            "itemName": description,
+            "itemQty": qty,
+            "itemPrice": unitPrice
+        }
+
+        $.ajax({
+            url: BaseURL+'item',
+            method: 'put',
+            contentType: "application/json",
+            data: JSON.stringify(object),
+            success: function (resp) {
+                alert(resp.message);
+                getAllItems();
+            },
+            error: function (error) {
+                alert(error.responseJSON.message);
+            }
+        });
+    });
+
+
+
+
+
+</script>
 
 </body>
 </html>
