@@ -85,7 +85,7 @@
 </main>
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    const BaseURL="http://localhost:8080/web/";
+    const BaseURL="http://localhost:8080/jsonp/pages/";
 
     getAllItems();
 
@@ -97,7 +97,7 @@
     function getAllItems() {
         $("#tblItem").empty();
         $.ajax({
-            url: BaseURL+'item',
+            url: BaseURL+'item?option=getAll',
             dataType: "json",
             method: "GET",
             success: function (response) {

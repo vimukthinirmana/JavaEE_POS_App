@@ -95,7 +95,7 @@
 
 <!--bind a event on btn GetAll btn-->
 <script>
-    const BaseURL="http://localhost:8080/web/";
+    const BaseURL="http://localhost:8080/jsonp/pages/";
 
     getAllCustomers();
 
@@ -109,7 +109,7 @@
         $("#tblCustomer").empty();
         <!--send ajax request to the customer servlet using jQuery-->
         $.ajax({
-            url: BaseURL+'customer',
+            url: BaseURL+'customer?option=getAll',
             dataType: "json",
             method: "GET",
             success: function (response) {

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="web">
-    <output-path>$PROJECT_DIR$/out/artifacts/web</output-path>
-    <root id="archive" name="web.war">
+  <artifact type="war" name="jsonp">
+    <output-path>$PROJECT_DIR$/out/artifacts/jsonp</output-path>
+    <root id="archive" name="jsonp.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
           <element id="library" level="project" name="javax.json-1.1.4" />
